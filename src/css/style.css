@@ -1,0 +1,8 @@
+paper-header-panel {
+  height: 100%;
+}
+
+paper-input {
+  width: 100%;
+  max-width: 400px;
+}
