@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
-    <title>Berkeley Religious Sites</title>
+    <title>Jesuit Works - Bay Area</title>
     <link rel="import"
           href="/bower_components/paper-drawer-panel/paper-drawer-panel.html">
     <link rel="import"
@@ -23,13 +23,15 @@
           href="/css/style.min.css">
     <style is="custom-style">
         paper-toolbar {
-          --paper-toolbar-background: rgb(29, 93, 26);
+          --paper-toolbar-background: #1d5d1a;
           --paper-toolbar-color: #fff;
         }
         paper-input {
-          --paper-input-container-color: #fff;
-          --paper-input-container-focus-color: #fff;
-          --paper-input-container-input-color: #fff;
+          --paper-input-container-color: #0c4109;
+          --paper-input-container-focus-color: #0c4109;
+          --paper-input-container-input-color: #0c4109;
+          --paper-input-container-label: {display: none;};
+          --paper-input-container-label-focus: {display: block;};
         }
     </style>
   </head>
@@ -37,17 +39,19 @@
     <paper-drawer-panel class="flex">
       <paper-header-panel class="flex" drawer>
         <paper-toolbar>
-          <div>Previous Searches</div>
+          <div>Bay Area Jesuit Works</div>
         </paper-toolbar>
-        <div>List of Searches Here</div>
+        <paper-input type="search"
+                     placeholder="Search"
+                     label="Search">
+          <iron-icon prefix icon="search"></iron-icon>
+        </paper-input>
+        <div>Results Here</div>
       </paper-header-panel>
-      <paper-header-panel class="green flex" main>
+      <paper-header-panel class="flex" main>
         <paper-toolbar>
-          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-          <paper-input type="search" label="Religious Institutes in Berkeley"
-                       placeholder="Search">
-            <iron-icon prefix icon="search"></iron-icon>
-          </paper-input>
+          <paper-icon-button icon="menu" paper-drawer-toggle>
+          </paper-icon-button>
         </paper-toolbar>
         <div class="map">Map Here</div>
       </paper-header-panel>
