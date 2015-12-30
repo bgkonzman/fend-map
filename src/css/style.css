@@ -6,3 +6,8 @@ paper-input {
   width: 100%;
   max-width: 400px;
 }
+
+.drawer {
+  background-color: #022500;
+  color: white;
+}
