@@ -11,3 +11,11 @@ paper-input {
   background-color: #022500;
   color: white;
 }
+
+.paper-header-panel, google-map {
+  height: 100%;
+}
+
+#mainContainer.paper-header-panel {
+  overflow-y: hidden;
+}
