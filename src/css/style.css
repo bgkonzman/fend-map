@@ -1,3 +1,8 @@
+h1 {
+  font-size: 1.25em;
+  margin: auto;
+}
+
 paper-header-panel {
   height: 100%;
 }
