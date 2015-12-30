@@ -1,4 +1,4 @@
-var works = [
+var initialWorks = [
   {
     name: "Jesuit School of Theology",
     latitude: "37.877573",
@@ -40,3 +40,9 @@ var works = [
     longitude: "-121.984493"
   }
 ]
+
+var Work = function(workItem) {
+  this.name = ko.observable(workItem.name);
+  this.latitude = ko.observable(workItem.latitude);
+  this.longitude = ko.observable(workItem.longitude);
+}

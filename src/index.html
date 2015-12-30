@@ -48,7 +48,9 @@
                      no-label-float>
           <iron-icon prefix icon="search"></iron-icon>
         </paper-input>
-        <div>Results Here</div>
+        <ul data-bind="foreach: workList">
+          <li data-bind="text: name"></li>
+        </ul>
       </paper-header-panel>
       <paper-header-panel class="flex" main>
         <paper-toolbar>
@@ -62,5 +64,8 @@
       </paper-header-panel>
     </paper-drawer-panel>
     <script src="/bower_components/knockout/dist/knockout.js"></script>
+    <script src="/js/models.min.js"></script>
+    <script src="/js/viewmodel.min.js"></script>
+    <script src="/js/views.min.js"></script>
   </body>
 </html>
