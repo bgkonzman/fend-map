@@ -58,12 +58,22 @@
         <div id="map"></div>
       </paper-header-panel>
     </paper-drawer-panel>
+    <script>
+      var map;
+
+      var initMap = function() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: {lat: 37.557664, lng: -122.1630287}
+          });
+      }
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
+    </script>
     <script src="/bower_components/knockout/dist/knockout.js"></script>
     <script src="/js/models.min.js"></script>
     <script src="/js/viewmodel.min.js"></script>
     <script src="/js/views.min.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
-    </script>
   </body>
 </html>
