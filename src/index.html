@@ -19,8 +19,6 @@
           href="/bower_components/iron-icons/iron-icons.html">
     <link rel="import"
           href="/bower_components/iron-flex-layout/iron-flex-layout.html">
-    <link rel="import"
-          href="/bower_components/google-map/google-map.html">
     <link rel="stylesheet"
           href="/css/style.min.css">
     <style is="custom-style">
@@ -57,15 +55,15 @@
           <paper-icon-button icon="menu" paper-drawer-toggle>
           </paper-icon-button>
         </paper-toolbar>
-        <google-map latitude="37.557664" longitude="-122.1630287" zoom="10"
-                    disable-default-ui
-                    apiKey="AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU">
-        </google-map>
+        <div id="map"></div>
       </paper-header-panel>
     </paper-drawer-panel>
     <script src="/bower_components/knockout/dist/knockout.js"></script>
     <script src="/js/models.min.js"></script>
     <script src="/js/viewmodel.min.js"></script>
     <script src="/js/views.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
+    </script>
   </body>
 </html>

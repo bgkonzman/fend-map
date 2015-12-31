@@ -9,3 +9,10 @@ var viewModel = function() {
 }
 
 ko.applyBindings(new viewModel());
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: {lat: 37.557664, lng: -122.1630287}
+    });
+}

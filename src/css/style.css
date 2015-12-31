@@ -17,7 +17,7 @@ paper-input {
   color: white;
 }
 
-.paper-header-panel, google-map {
+.paper-header-panel, #map {
   height: 100%;
 }
 
