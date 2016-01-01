@@ -1,7 +1,7 @@
 var viewModel = function() {
   var self = this;
-  this.markers = ko.observableArray([]);
-
+  var input = document.getElementById("input");
+  this.markers = [];
   this.workList = ko.observableArray([]);
 
   this.resetWorkList = function() {
@@ -24,6 +24,15 @@ var viewModel = function() {
   this.workList().forEach( function(work) {
     self.markers.push( self.addMarker(work) );
   });
+
+  input.onkeyup = function() {
+    self.workList([]);
+    initialWorks.forEach( function(workItem) {
+      if (workItem.name.search(input.value) !== -1) {
+        self.workList.push( new Work(workItem) );
+      }
+    });
+  }
 
 }
 
