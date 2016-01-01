@@ -19,6 +19,7 @@ var viewModel = function() {
       title: work.name(),
       map: map
     });
+    return marker;
   }
 
   this.workList().forEach( function(work) {
@@ -30,6 +31,15 @@ var viewModel = function() {
     initialWorks.forEach( function(workItem) {
       if (workItem.name.toUpperCase().search(input.value.toUpperCase()) !== -1) {
         self.workList.push( new Work(workItem) );
+      }
+    });
+
+    for (i=0; i < self.markers.length; i++)
+      self.markers[i].setVisible(false);
+    self.workList().forEach( function(work) {
+      for (i=0; i < self.markers.length; i++) {
+        if (work.latitude() === self.markers[i].getPosition().lat())
+          self.markers[i].setVisible(true);
       }
     });
   }
