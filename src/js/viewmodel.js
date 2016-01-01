@@ -25,10 +25,10 @@ var viewModel = function() {
     self.markers.push( self.addMarker(work) );
   });
 
-  input.onkeyup = function() {
+  input.oninput = function() {
     self.workList([]);
     initialWorks.forEach( function(workItem) {
-      if (workItem.name.search(input.value) !== -1) {
+      if (workItem.name.toUpperCase().search(input.value.toUpperCase()) !== -1) {
         self.workList.push( new Work(workItem) );
       }
     });
