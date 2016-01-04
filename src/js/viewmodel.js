@@ -17,23 +17,25 @@ var viewModel = function() {
   }
 
   this.workList().forEach( function(work) {
-    work.marker( self.addMarker(work) );
+    work.marker = self.addMarker(work);
   });
 
   input.oninput = function() {
-    self.workList().forEach( function(workItem) {
-      workItem.isInList( false );
-      if (workItem.name().toUpperCase().search(input.value.toUpperCase()) !== -1) {
-        workItem.isInList( true );
+    self.workList().forEach( function(work) {
+      if (work.name().toUpperCase().search(input.value.toUpperCase()) !== -1) {
+        work.isInList( true );
+      }
+      else {
+        work.isInList( false );
       }
     });
 
-    for (i=0; i < self.workList.length; i++)
-      self.workList()[i].setVisible(false);
     self.workList().forEach( function(work) {
-      for (i=0; i < self.workList.length; i++) {
-        if (work.latitude() === self.markers[i].getPosition().lat())
-          self.workList()[i].setVisible(true);
+      if ( work.isInList() ) {
+        work.marker.setVisible(true);
+      }
+      else {
+        work.marker.setVisible(false);
       }
     });
   }
