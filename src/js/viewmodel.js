@@ -1,13 +1,12 @@
 var viewModel = function() {
   var self = this;
   var input = document.getElementById("input");
-  this.markers = [];
   this.workList = ko.observableArray([]);
 
   initialWorks.forEach( function(workItem) {
     self.workList.push( new Work(workItem) );
   });
-  
+
   this.addMarker = function(work) {
     var marker = new google.maps.Marker({
       position: {lat: work.latitude(), lng: work.longitude()},
@@ -18,7 +17,7 @@ var viewModel = function() {
   }
 
   this.workList().forEach( function(work) {
-    self.markers.push( self.addMarker(work) );
+    work.marker( self.addMarker(work) );
   });
 
   input.oninput = function() {
