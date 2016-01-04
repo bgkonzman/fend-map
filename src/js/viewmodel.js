@@ -4,15 +4,10 @@ var viewModel = function() {
   this.markers = [];
   this.workList = ko.observableArray([]);
 
-  this.resetWorkList = function() {
-    self.workList([]);
-    initialWorks.forEach( function(workItem) {
-      self.workList.push( new Work(workItem) );
-    });
-  }
-
-  this.resetWorkList();
-
+  initialWorks.forEach( function(workItem) {
+    self.workList.push( new Work(workItem) );
+  });
+  
   this.addMarker = function(work) {
     var marker = new google.maps.Marker({
       position: {lat: work.latitude(), lng: work.longitude()},
