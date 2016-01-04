@@ -21,19 +21,19 @@ var viewModel = function() {
   });
 
   input.oninput = function() {
-    self.workList([]);
-    initialWorks.forEach( function(workItem) {
-      if (workItem.name.toUpperCase().search(input.value.toUpperCase()) !== -1) {
-        self.workList.push( new Work(workItem) );
+    self.workList().forEach( function(workItem) {
+      workItem.isInList( false );
+      if (workItem.name().toUpperCase().search(input.value.toUpperCase()) !== -1) {
+        workItem.isInList( true );
       }
     });
 
-    for (i=0; i < self.markers.length; i++)
-      self.markers[i].setVisible(false);
+    for (i=0; i < self.workList.length; i++)
+      self.workList()[i].setVisible(false);
     self.workList().forEach( function(work) {
-      for (i=0; i < self.markers.length; i++) {
+      for (i=0; i < self.workList.length; i++) {
         if (work.latitude() === self.markers[i].getPosition().lat())
-          self.markers[i].setVisible(true);
+          self.workList()[i].setVisible(true);
       }
     });
   }

@@ -46,4 +46,5 @@ var Work = function(workItem) {
   this.latitude = ko.observable(workItem.latitude);
   this.longitude = ko.observable(workItem.longitude);
   this.marker = ko.observable();
+  this.isInList = ko.observable(true);
 }

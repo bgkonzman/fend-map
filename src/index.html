@@ -47,7 +47,9 @@
           <iron-icon prefix icon="search"></iron-icon>
         </paper-input>
         <ul data-bind="foreach: workList">
+          <!-- ko if: isInList -->
           <li data-bind="text: name"></li>
+          <!-- /ko -->
         </ul>
       </paper-header-panel>
       <paper-header-panel class="flex" main>
