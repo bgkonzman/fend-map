@@ -46,5 +46,7 @@ var Work = function(workItem) {
   this.latitude = ko.observable(workItem.latitude);
   this.longitude = ko.observable(workItem.longitude);
   this.marker = null;
+  this.markerIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
   this.isInList = ko.observable(true);
+  this.isClicked = ko.observable(false);
 }

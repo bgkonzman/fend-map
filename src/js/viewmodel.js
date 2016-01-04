@@ -11,8 +11,12 @@ var viewModel = function() {
     var marker = new google.maps.Marker({
       position: {lat: work.latitude(), lng: work.longitude()},
       title: work.name(),
-      map: map
+      map: map,
+      icon: work.markerIcon
     });
+    marker.addListener("click", function() {
+      self.toggleClicked(work);
+    })
     return marker;
   }
 
@@ -38,6 +42,17 @@ var viewModel = function() {
         work.marker.setVisible(false);
       }
     });
+  }
+
+  this.toggleClicked = function(work) {
+    work.isClicked( !work.isClicked() );
+    if ( work.isClicked() ) {
+      work.markerIcon = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+    }
+    else {
+      work.markerIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+    }
+    work.marker.setIcon( work.markerIcon );
   }
 
 }

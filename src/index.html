@@ -48,7 +48,7 @@
         </paper-input>
         <ul data-bind="foreach: workList">
           <!-- ko if: isInList -->
-          <li data-bind="text: name"></li>
+          <li data-bind="text: name, click: $parent.toggleClicked, css: {isClicked: isClicked}"></li>
           <!-- /ko -->
         </ul>
       </paper-header-panel>

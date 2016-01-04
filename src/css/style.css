@@ -24,3 +24,7 @@ paper-input {
 #mainContainer.paper-header-panel {
   overflow-y: hidden;
 }
+
+.isClicked {
+  font-weight: bold;
+}
