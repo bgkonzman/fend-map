@@ -1,5 +1,6 @@
 var viewModel = function() {
   var self = this;
+  var contentString = "Lorem ipsum dolor sit amet";
   var input = document.getElementById("input");
   this.workList = ko.observableArray([]);
 
@@ -20,9 +21,14 @@ var viewModel = function() {
     work.isClicked( !work.isClicked() );
     if ( work.isClicked() ) {
       work.markerIcon = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+      work.infoWindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      work.infoWindow.open(map, work.marker);
     }
     else {
       work.markerIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+      work.infoWindow.close();
     }
     work.marker.setIcon( work.markerIcon );
   }
