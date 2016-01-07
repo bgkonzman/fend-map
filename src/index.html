@@ -49,7 +49,7 @@
         <ul data-bind="foreach: workList">
           <!-- ko if: isInList -->
           <li data-bind="text: name,
-                         click: $parent.toggleClicked, 
+                         click: $parent.toggleClicked,
                          css: {isClicked: isClicked}"></li>
           <!-- /ko -->
         </ul>
@@ -78,6 +78,9 @@
              key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
     </script>
     <script src="/bower_components/knockout/dist/knockout.js"></script>
+    <script
+      src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js">
+    </script>
     <script src="/js/models.min.js"></script>
     <script src="/js/viewmodel.min.js"></script>
     <script src="/js/views.min.js"></script>
