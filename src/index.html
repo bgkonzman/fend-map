@@ -48,7 +48,9 @@
         </paper-input>
         <ul data-bind="foreach: workList">
           <!-- ko if: isInList -->
-          <li data-bind="text: name, click: $parent.toggleClicked, css: {isClicked: isClicked}"></li>
+          <li data-bind="text: name,
+                         click: $parent.toggleClicked, 
+                         css: {isClicked: isClicked}"></li>
           <!-- /ko -->
         </ul>
       </paper-header-panel>
@@ -72,7 +74,8 @@
       }
     </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?
+             key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
     </script>
     <script src="/bower_components/knockout/dist/knockout.js"></script>
     <script src="/js/models.min.js"></script>
