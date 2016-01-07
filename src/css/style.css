@@ -28,3 +28,7 @@ paper-input {
 .isClicked {
   font-weight: bold;
 }
+
+.info-window-wiki {
+  width: 50%;
+}

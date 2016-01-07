@@ -47,10 +47,15 @@ var viewModel = function() {
             .done( function(response) {
               var extract = response.query.pages[Object.keys(response.query.pages)[0]].extract;
               if (extract) {
-                work.wikiInfo = extract;
+                work.wikiInfo = '<div class="info-window-wiki">'
+                                + extract
+                                + "</div>";
               }
               else {
-                work.wikiInfo = work.name() + " unfortunately has no entry on Wikipedia.";
+                work.wikiInfo = '<div class="info-window-wiki">'
+                                + work.name()
+                                + " unfortunately has no entry on Wikipedia."
+                                +"</div>";
               }
             })
             .fail( function(response) {
