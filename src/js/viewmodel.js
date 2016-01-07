@@ -52,6 +52,10 @@ var viewModel = function() {
               else {
                 work.wikiInfo = work.name() + " unfortunately has no entry on Wikipedia.";
               }
+            })
+            .fail( function(response) {
+              console.log(response);
+              work.wikiInfo = "Unfortunately, we hit a snag retrieving Wikipedia information!"
             });
     }
   });
