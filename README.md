@@ -10,7 +10,6 @@ Udacity FEND P5-1
 7. Copy the bower_components folder into dist/
 
 # Running the app
-The easiest way to run and access the app locally is with ngrok.
 1. Make sure to have [ngrok installed](https://ngrok.com/download).
 2. Run a local web server - with python installed, this is as simple as:
    a. Navigating to the project's /dist directory
