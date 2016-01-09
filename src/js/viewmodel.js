@@ -45,7 +45,7 @@ var viewModel = function() {
     self.workList.push( new Work(workItem) );
   });
 
-  var wikiBaseUrl = "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&pageids=";
+  var wikiBaseUrl = "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&exchars=512&pageids=";
   this.workList().forEach( function(work) {
     work.marker = self.addMarker(work);
 
@@ -55,19 +55,16 @@ var viewModel = function() {
               dataType: "jsonp"})
             .done( function(response) {
               var extract = response.query.pages[0].extract;
+              work.wikiInfo = '<div class="info-window">'
+                              + '<p class="info-window-wiki">';
               if (extract) {
-                work.wikiInfo = '<div class="info-window">'
-                                + '<p class="info-window-wiki">'
-                                + extract
-                                + "</p>";
+                work.wikiInfo = work.wikiInfo + extract;
               }
               else {
-                work.wikiInfo = '<div class="info-window">'
-                                + '<p class="info-window-wiki">'
-                                + work.name
-                                + " unfortunately has no entry on Wikipedia."
-                                +"</p>";
+                work.wikiInfo = work.wikiInfo + work.name
+                                + " unfortunately has no entry on Wikipedia.";
               }
+              work.wikiInfo = work.wikiInfo + "</p>";
             })
             .fail( function(response) {
               console.log(response);
