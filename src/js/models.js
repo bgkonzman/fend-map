@@ -36,9 +36,9 @@ var initialWorks = [
   },
   {
     name: "Saint Agnes Catholic Church",
-    latitude: 32.7230195,
-    longitude: -117.2335845,
-    heading: 300,
+    latitude: 37.7714676,
+    longitude: -122.445568,
+    heading: 270,
     wikiPageId: null
   },
   {
