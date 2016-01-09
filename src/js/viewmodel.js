@@ -45,7 +45,7 @@ var viewModel = function() {
     self.workList.push( new Work(workItem) );
   });
 
-  var wikiBaseUrl = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=";
+  var wikiBaseUrl = "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&pageids=";
   this.workList().forEach( function(work) {
     work.marker = self.addMarker(work);
 
