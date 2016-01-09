@@ -29,6 +29,18 @@ paper-input {
   font-weight: bold;
 }
 
+.info-window {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .info-window-wiki {
-  width: 50%;
+  width: 45%;
+}
+
+.info-window-image {
+  width: 45%;
+  max-height: 300px;
 }
