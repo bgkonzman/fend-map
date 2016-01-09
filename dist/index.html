@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jesuit Works - Bay Area</title><script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script><link rel="import" href="/bower_components/paper-drawer-panel/paper-drawer-panel.html"><link rel="import" href="/bower_components/paper-header-panel/paper-header-panel.html"><link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html"><link rel="import" href="/bower_components/paper-input/paper-input.html"><link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html"><link rel="import" href="/bower_components/iron-icons/iron-icons.html"><link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html"><link rel="stylesheet" href="/css/style.min.css"><style is="custom-style">paper-toolbar {
+          --paper-toolbar-background: #1d5d1a;
+          --paper-toolbar-color: #fff;
+        }
+        paper-input {
+          --paper-input-container-color: white;
+          --paper-input-container-focus-color: white;
+          --paper-input-container-input-color: white;
+          --paper-input-container-label: {display: none;};
+          --paper-input-container-label-focus: {display: block;};
+        }</style></head><body class="fullbleed vertical layout"><paper-drawer-panel class="flex"><paper-header-panel class="flex drawer" drawer><paper-toolbar><h1>Bay Area Jesuit Works</h1></paper-toolbar><paper-input type="search" placeholder="Search" no-label-float><iron-icon prefix icon="search"></iron-icon></paper-input><ul data-bind="foreach: workList"><!-- ko if: isInList --><li data-bind="text: name,
+                         click: $parent.toggleClicked,
+                         css: {isClicked: isClicked}"></li><!-- /ko --></ul></paper-header-panel><paper-header-panel class="flex" main><paper-toolbar><paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button></paper-toolbar><div id="map"></div></paper-header-panel></paper-drawer-panel><script>var map;
+
+      var initMap = function() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: {lat: 37.557664, lng: -122.1630287},
+            disableDefaultUI: true
+          });
+      }</script><script src="https://maps.googleapis.com/maps/api/js?
+             key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap"></script><script src="/bower_components/knockout/dist/knockout.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script><script src="/js/models.min.js"></script><script src="/js/viewmodel.min.js"></script><script src="/js/views.min.js"></script></body></html>
