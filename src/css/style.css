@@ -12,6 +12,21 @@ paper-input {
   max-width: 400px;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px 0px;
+  text-align: center;
+}
+
+li:hover {
+  color: #b5855e;
+  cursor: pointer;
+}
+
 .drawer {
   background-color: #022500;
   color: white;
@@ -38,9 +53,4 @@ paper-input {
 
 .info-window-wiki {
   width: 45%;
-}
-
-.info-window-image {
-  width: 45%;
-  max-height: 300px;
 }

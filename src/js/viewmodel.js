@@ -16,7 +16,7 @@ var viewModel = function() {
     return marker;
   }
 
-  var streetViewBaseUrl = "https://maps.googleapis.com/maps/api/streetview?size=300x300&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location="
+  var streetViewBaseUrl = "https://maps.googleapis.com/maps/api/streetview?size=200x200&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location="
   this.toggleClicked = function(work) {
     work.isClicked( !work.isClicked() );
     if ( work.isClicked() ) {
