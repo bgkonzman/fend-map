@@ -14,6 +14,5 @@ Udacity FEND P5-1
 2. Run a local web server - with python installed, this is as simple as:  
    a. Navigating to the project's /dist directory  
    b. Running "python -m SimpleHTTPServer 8080" from a CLI  
-3. Run ngrok from a CLI - if you've used port 8080 as above, it's as simple as:
-   a. ngrok http 8080  
+3. Run ngrok from a CLI - if you've used port 8080 as above, it's as simple as: "ngrok http 8080"
 4. Use a browser to visit the forwarding address ngrok displays.
