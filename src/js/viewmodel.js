@@ -27,7 +27,8 @@ var viewModel = function() {
     if ( work.isClicked() ) {
       work.infoWindow = new google.maps.InfoWindow({
         content:  work.wikiInfo
-                  + '<img class="info-window-image" src="'
+                  + '<img class="info-window-image" alt="Street View Image" '
+                  + 'src="'
                   + streetViewBaseUrl
                   + work.latitude + ","
                   + work.longitude
