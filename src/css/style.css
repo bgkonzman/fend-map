@@ -1,3 +1,4 @@
+/* Header */
 h1 {
   font-size: 1.25em;
   margin: auto;
@@ -12,6 +13,7 @@ paper-input {
   max-width: 400px;
 }
 
+/* List of Works */
 ul {
   padding: 0;
 }
@@ -32,17 +34,11 @@ li:hover {
   color: white;
 }
 
-.paper-header-panel, #map {
-  height: 100%;
-}
-
-#mainContainer.paper-header-panel {
-  overflow-y: hidden;
-}
-
 .isClicked {
   font-weight: bold;
 }
+
+/* Map InfoWindow */
 
 .info-window {
   display: flex;
@@ -53,4 +49,19 @@ li:hover {
 
 .info-window-wiki {
   width: 45%;
+}
+
+/* Map*/
+
+.paper-header-panel, #map {
+  height: 100%;
+}
+
+  /* Note: #mainContainer is implemented by the Polymer library. I cannot bring
+   * it into line with Udacity's CSS style guidelines for type selectors and
+   * capitalization without breaking the componentization of Polymer, something
+   * I would consider a Very Bad Idea. If I'm wrong, please do let me know.
+   */
+#mainContainer.paper-header-panel {
+  overflow-y: hidden;
 }
