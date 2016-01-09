@@ -54,7 +54,7 @@ var viewModel = function() {
               url: wikiBaseUrl + work.wikiPageId,
               dataType: "jsonp"})
             .done( function(response) {
-              var extract = response.query.pages[Object.keys(response.query.pages)[0]].extract;
+              var extract = response.query.pages[0].extract;
               if (extract) {
                 work.wikiInfo = '<div class="info-window">'
                                 + '<p class="info-window-wiki">'
