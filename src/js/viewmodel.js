@@ -16,6 +16,11 @@ var viewModel = function() {
     return marker;
   }
 
+  this.startBounce = function(marker) {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout( function() {marker.setAnimation(null);}, 1400 );
+  }
+
   var streetViewBaseUrl = "https://maps.googleapis.com/maps/api/streetview?size=200x200&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location="
   this.toggleClicked = function(work) {
     work.isClicked( !work.isClicked() );
@@ -32,10 +37,9 @@ var viewModel = function() {
                   + "</div>"
       });
       work.infoWindow.open(map, work.marker);
-      work.markerIcon = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+      self.startBounce(work.marker);
     }
     else {
-      work.markerIcon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
       work.infoWindow.close();
     }
     work.marker.setIcon( work.markerIcon );
@@ -51,25 +55,26 @@ var viewModel = function() {
 
     if (work.wikiInfo === null){
       var wikiInfo = $.ajax({
-              url: wikiBaseUrl + work.wikiPageId,
-              dataType: "jsonp"})
-            .done( function(response) {
-              var extract = response.query.pages[0].extract;
-              work.wikiInfo = '<div class="info-window">'
-                              + '<p class="info-window-wiki">';
-              if (extract) {
-                work.wikiInfo = work.wikiInfo + extract;
-              }
-              else {
-                work.wikiInfo = work.wikiInfo + work.name
-                                + " unfortunately has no entry on Wikipedia.";
-              }
-              work.wikiInfo = work.wikiInfo + "</p>";
-            })
-            .fail( function(response) {
-              console.log(response);
-              work.wikiInfo = "Unfortunately, we hit a snag retrieving Wikipedia information!"
-            });
+                        url: wikiBaseUrl + work.wikiPageId,
+                        dataType: "jsonp"
+                      })
+                      .done( function(response) {
+                        var extract = response.query.pages[0].extract;
+                        work.wikiInfo = '<div class="info-window">'
+                                        + '<p class="info-window-wiki">';
+                        if (extract) {
+                          work.wikiInfo = work.wikiInfo + extract;
+                        }
+                        else {
+                          work.wikiInfo = work.wikiInfo + work.name
+                                          + " unfortunately has no entry on Wikipedia.";
+                        }
+                        work.wikiInfo = work.wikiInfo + "</p>";
+                      })
+                      .fail( function(response) {
+                        console.log(response);
+                        work.wikiInfo = "Unfortunately, we hit a snag retrieving Wikipedia information!";
+                      });
     }
   });
 
