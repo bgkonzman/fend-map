@@ -51,7 +51,7 @@ var viewModel = function() {
   });
 
   // For each of the works in the workList array, create and set its marker and wikiInfo properties
-  var wikiBaseUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&exchars=512&pageids=';
+  var wikiBaseUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&exchars=300&pageids=';
   var streetViewBaseUrl = 'https://maps.googleapis.com/maps/api/streetview?size=200x200&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location=';
   self.workList().forEach(function(work) {
     work.marker = self.addMarker(work);

@@ -45,10 +45,16 @@ li:hover {
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
+  max-height: 500px;
+  max-width: 500px;
 }
 
 .info-window-wiki {
-  width: 45%;
+  width: 48%;
+}
+
+.info-window-image {
+  width: 48%;
 }
 
 /* Map*/
