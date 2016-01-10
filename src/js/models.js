@@ -57,7 +57,10 @@ var initialWorks = [
   }
 ];
 
-/* A Work object represents one particular Jesuit work. */
+/**
+ * Represents one particular Jesuit work.
+ * @param  {Object} workItem - the values with which to initialize
+ */
 var Work = function(workItem) {
   this.name = workItem.name;
   this.latitude = workItem.latitude;

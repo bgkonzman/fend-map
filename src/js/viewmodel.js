@@ -1,10 +1,17 @@
+/**
+ * View Model knockout uses to apply bindings
+ */
 var viewModel = function() {
   var self = this;
   var input = document.getElementById('input');
   var drawer = document.getElementsByTagName('paper-drawer-panel')[0];
   self.workList = ko.observableArray([]);
 
-  // addMarker() creates a new marker, attaches a listener for clicks, and returns it.
+  /**
+   * creates a new marker, attaches a listener for clicks, and returns it.
+   * @param  {Work} work - a Work object
+   * @return {google.Maps.marker} - an Google map marker instance
+   */
   self.addMarker = function(work) {
     var marker = new google.maps.Marker({
       position: {lat: work.latitude, lng: work.longitude},
@@ -18,14 +25,20 @@ var viewModel = function() {
     return marker;
   };
 
-  // startBounce() adds a bounce animation to a marker and removes it after two bounces
+  /**
+   * adds a bounce animation to a marker and removes it after two bounces
+   * @param  {[google.Maps.marker]} marker - the marker to make bounce
+   */
   self.startBounce = function(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {marker.setAnimation(null);}, 1400);
   };
 
-  // toggleClicked() changes the state of a work's isClicked() boolean, then
-  // opens an infoWindow if isClicked() is true, or closes the infoWindow if it's false.
+  /**
+   * closes all infoWindows, sets all isClicked() to false,
+   * sets the clicked work's isClicked() to true, then opens its infoWindow
+   * @param  {Work} work - the work item that was clicked
+   */
   self.toggleClicked = function(work) {
     self.workList().forEach(function(workFromList) {
       if (workFromList.infoWindow !== null) {
@@ -42,6 +55,7 @@ var viewModel = function() {
       content:  work.wikiInfo
     });
     work.infoWindow.open(map, work.marker);
+    // bounce the marker on click
     self.startBounce(work.marker);
   };
 
@@ -50,7 +64,7 @@ var viewModel = function() {
     self.workList.push(new Work(work));
   });
 
-  // Then take the locations of the works into account when first viewing the map
+  // Then take the locations of the works into account when first sizing the map
   // See: https://stackoverflow.com/questions/10268033/google-maps-api-v3-method-fitbounds
   var bounds = new google.maps.LatLngBounds();
   self.workList().forEach(function(work) {
@@ -92,12 +106,7 @@ var viewModel = function() {
                     });
   });
 
-  // Attach a listener to the input element that filters the workList
-  // This cannot be done with a knockoutjs data binding because of the way that
-  // Polymer's <paper-input> element gets added to the page - there's no guarantee
-  // that the input node will be in the DOM before knockout applies its bindings.
-  // It's probably possible to apply the bindings to that specific element after document.ready,
-  // but that solution seems at least as hacky as simply adding a listener directly like this.
+  // Attach a listener to the input element that filters the workList and markers
   input.oninput = function() {
     // Filter the list
     self.workList().forEach(function(work) {
