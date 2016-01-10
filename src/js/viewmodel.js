@@ -1,6 +1,7 @@
 var viewModel = function() {
   var self = this;
   var input = document.getElementById('input');
+  var drawer = document.getElementsByTagName('paper-drawer-panel')[0];
   self.workList = ko.observableArray([]);
 
   // addMarker() creates a new marker, attaches a listener for clicks, and returns it.
@@ -26,8 +27,6 @@ var viewModel = function() {
   // toggleClicked() changes the state of a work's isClicked() boolean, then
   // opens an infoWindow if isClicked() is true, or closes the infoWindow if it's false.
   self.toggleClicked = function(work) {
-
-
     self.workList().forEach(function(workFromList) {
       if (workFromList.infoWindow !== null) {
         workFromList.infoWindow.close();
@@ -37,16 +36,13 @@ var viewModel = function() {
 
     work.isClicked(true);
 
-    if (work.isClicked()) {
-      work.infoWindow = new google.maps.InfoWindow({
-        content:  work.wikiInfo
-      });
-      work.infoWindow.open(map, work.marker);
-      self.startBounce(work.marker);
-    } else {
-      work.infoWindow.close();
-    }
-    work.marker.setIcon(work.markerIcon);
+    // Auto-close the side panel on click (only works on mobile viewport sizes)
+    drawer.closeDrawer();
+    work.infoWindow = new google.maps.InfoWindow({
+      content:  work.wikiInfo
+    });
+    work.infoWindow.open(map, work.marker);
+    self.startBounce(work.marker);
   };
 
   // Take each object in initialWorks, create a Work object from it, and add it to the workList array
