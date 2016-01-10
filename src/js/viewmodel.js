@@ -50,6 +50,15 @@ var viewModel = function() {
     self.workList.push(new Work(work));
   });
 
+  // Then take the locations of the works into account when first viewing the map
+  // See: https://stackoverflow.com/questions/10268033/google-maps-api-v3-method-fitbounds
+  var bounds = new google.maps.LatLngBounds();
+  self.workList().forEach(function(work) {
+    var latLng = new google.maps.LatLng(work.latitude, work.longitude);
+    bounds.extend(latLng);
+  });
+  map.fitBounds(bounds);
+
   // For each of the works in the workList array, create and set its marker and wikiInfo properties
   var wikiBaseUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&exchars=300&pageids=';
   var streetViewBaseUrl = 'https://maps.googleapis.com/maps/api/streetview?size=200x200&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location=';
