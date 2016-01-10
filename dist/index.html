@@ -8,15 +8,15 @@
           --paper-input-container-input-color: white;
           --paper-input-container-label: {display: none;};
           --paper-input-container-label-focus: {display: block;};
-        }</style></head><body class="fullbleed vertical layout"><paper-drawer-panel class="flex"><paper-header-panel class="flex drawer" drawer><paper-toolbar><h1>Bay Area Jesuit Works</h1></paper-toolbar><paper-input type="search" placeholder="Search" no-label-float><iron-icon prefix icon="search"></iron-icon></paper-input><ul data-bind="foreach: workList"><!-- ko if: isInList --><li data-bind="text: name,
+        }</style></head><body class="fullbleed vertical layout"><paper-drawer-panel class="flex"><paper-header-panel class="flex drawer" drawer><paper-toolbar></paper-toolbar><paper-input type="search" placeholder="Search" no-label-float><iron-icon prefix icon="search"></iron-icon></paper-input><ul data-bind="foreach: workList"><!-- ko if: isInList --><li data-bind="text: name,
                          click: $parent.toggleClicked,
-                         css: {isClicked: isClicked}"></li><!-- /ko --></ul></paper-header-panel><paper-header-panel class="flex" main><paper-toolbar><paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button></paper-toolbar><div id="map"></div></paper-header-panel></paper-drawer-panel><script>var map;
+                         css: {isClicked: isClicked}"></li><!-- /ko --></ul></paper-header-panel><paper-header-panel class="flex" main><paper-toolbar><paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button><h1>Bay Area Jesuit Works</h1></paper-toolbar><div id="map"></div></paper-header-panel></paper-drawer-panel><script src="/bower_components/knockout/dist/knockout.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script><script src="/js/models.min.js"></script><script src="/js/viewmodel.min.js"></script><script src="/js/views.min.js"></script><script>var map;
 
       var initMap = function() {
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: {lat: 37.557664, lng: -122.1630287},
             disableDefaultUI: true
           });
-      }</script><script src="https://maps.googleapis.com/maps/api/js?
-             key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap"></script><script src="/bower_components/knockout/dist/knockout.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script><script src="/js/models.min.js"></script><script src="/js/viewmodel.min.js"></script><script src="/js/views.min.js"></script></body></html>
+        // Only apply bindings after the map has initialized.
+        ko.applyBindings(new viewModel());
+      }</script><script async defer="defer" src="https://maps.googleapis.com/maps/api/js?
+             key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap"></script></body></html>
