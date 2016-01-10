@@ -68,6 +68,6 @@ var Work = function(workItem) {
   this.infoWindow = null;
   this.isInList = ko.observable(true);
   this.isClicked = ko.observable(false);
-  this.wikiInfo = null;
+  this.wikiInfo = "Hold on, still trying to get information from Wikipedia!";
   this.wikiPageId = workItem.wikiPageId;
 };

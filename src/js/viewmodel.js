@@ -65,11 +65,10 @@ var viewModel = function() {
   self.workList().forEach(function(work) {
     work.marker = self.addMarker(work);
 
-    // Wikipedia requires the use of jsonp to get information from their REST api.
-    // This is the only thing for which jQuery is used in this project, as implementing
-    // the same functionality in vanilla js still seemed quite complicated. Any suggestions
-    // about a better way to do this such that we can avoid including a jQuery dependency,
-    // with its additional latency and overhead, would be most appreciated.
+    // JSONP error handling must be done via timeout, as there's no error handling built in
+    var wikiRequestTimeout = setTimeout(function() {
+      work.wikiInfo = 'Unfortunately, we hit a snag retrieving Wikipedia information!';
+    }, 8000);
     var wikiInfo = $.ajax({
                       url: wikiBaseUrl + work.wikiPageId,
                       dataType: 'jsonp'
@@ -89,12 +88,8 @@ var viewModel = function() {
                                       work.latitude + ',' + work.longitude +
                                       '&heading=' + work.heading +
                                       '">' + '</div>';
-                    })
-                    .fail(function(response) {
-                      console.log(response);
-                      work.wikiInfo = 'Unfortunately, we hit a snag retrieving Wikipedia information!';
+                      clearTimeout(wikiRequestTimeout);
                     });
-
   });
 
   // Attach a listener to the input element that filters the workList

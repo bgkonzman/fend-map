@@ -66,27 +66,30 @@
         <div id="map"></div>
       </paper-header-panel>
     </paper-drawer-panel>
-    <script src="/bower_components/knockout/dist/knockout.js"></script>
-    <script
-      src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script src="/js/models.min.js"></script>
     <script src="/js/viewmodel.min.js"></script>
     <script src="/js/views.min.js"></script>
     <script>
       var map;
+      var mapDiv = document.getElementById('map');
 
       var initMap = function() {
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(mapDiv, {
             disableDefaultUI: true
           });
         // Only apply bindings after the map has initialized.
         ko.applyBindings(new viewModel());
-      }
+      };
+
+      var googleError = function() {
+        $mapDiv.text("Google Maps has unfortunately failed to load!");
+      };
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?
-             key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&callback=initMap"
+        onerror="googleError()">
     </script>
   </body>
 </html>
