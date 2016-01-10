@@ -57,11 +57,6 @@ li:hover {
   height: 100%;
 }
 
-  /* Note: #mainContainer is implemented by the Polymer library. I cannot bring
-   * it into line with Udacity's CSS style guidelines for type selectors and
-   * capitalization without breaking the componentization of Polymer, something
-   * I would consider a Very Bad Idea. If I'm wrong, please do let me know.
-   */
 #mainContainer.paper-header-panel {
   overflow-y: hidden;
 }
