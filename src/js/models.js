@@ -55,7 +55,7 @@ var initialWorks = [
     heading: 150,
     wikiPageId: null
   }
-]
+];
 
 /* A Work object represents one particular Jesuit work. */
 var Work = function(workItem) {
@@ -70,4 +70,4 @@ var Work = function(workItem) {
   this.isClicked = ko.observable(false);
   this.wikiInfo = null;
   this.wikiPageId = workItem.wikiPageId;
-}
+};

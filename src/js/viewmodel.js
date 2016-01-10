@@ -46,7 +46,7 @@ var viewModel = function() {
 
   // For each of the works in the workList array, create and set its marker and wikiInfo properties
   var wikiBaseUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro=&explaintext=&exchars=512&pageids=';
-  var streetViewBaseUrl = 'https://maps.googleapis.com/maps/api/streetview?size=200x200&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location='
+  var streetViewBaseUrl = 'https://maps.googleapis.com/maps/api/streetview?size=200x200&key=AIzaSyC6ulNy4A2PyqHTu0sjc6l4t_XOMg_tRAU&location=';
   self.workList().forEach(function(work) {
     work.marker = self.addMarker(work);
 
@@ -61,19 +61,19 @@ var viewModel = function() {
                     })
                     .done(function(response) {
                       var extract = response.query.pages[0].extract;
-                      work.wikiInfo = '<div class="info-window">'
-                                      + '<p class="info-window-wiki">';
+                      work.wikiInfo = '<div class="info-window">' +
+                                      '<p class="info-window-wiki">';
                       extract ?
                         work.wikiInfo = work.wikiInfo + extract :
-                        work.wikiInfo = work.wikiInfo + work.name
-                                        + ' unfortunately has no entry on Wikipedia.';
-                      work.wikiInfo = work.wikiInfo
-                                      + '</p>'
-                                      + '<img class="info-window-image" alt="Street View Image" '
-                                      + 'src="' + streetViewBaseUrl
-                                      + work.latitude + ',' + work.longitude
-                                      + '&heading=' + work.heading
-                                      + '">' + '</div>';
+                        work.wikiInfo = work.wikiInfo + work.name +
+                                        ' unfortunately has no entry on Wikipedia.';
+                      work.wikiInfo = work.wikiInfo +
+                                      '</p>' +
+                                      '<img class="info-window-image" alt="Street View Image" ' +
+                                      'src="' + streetViewBaseUrl +
+                                      work.latitude + ',' + work.longitude +
+                                      '&heading=' + work.heading +
+                                      '">' + '</div>';
                     })
                     .fail(function(response) {
                       console.log(response);
@@ -102,6 +102,6 @@ var viewModel = function() {
     });
   };
 
-}
+};
 
 ko.applyBindings(new viewModel());
