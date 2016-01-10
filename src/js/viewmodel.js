@@ -26,7 +26,17 @@ var viewModel = function() {
   // toggleClicked() changes the state of a work's isClicked() boolean, then
   // opens an infoWindow if isClicked() is true, or closes the infoWindow if it's false.
   self.toggleClicked = function(work) {
-    work.isClicked(!work.isClicked());
+
+
+    self.workList().forEach(function(workFromList) {
+      if (workFromList.infoWindow !== null) {
+        workFromList.infoWindow.close();
+      }
+      workFromList.isClicked(false);
+    });
+
+    work.isClicked(true);
+
     if (work.isClicked()) {
       work.infoWindow = new google.maps.InfoWindow({
         content:  work.wikiInfo
